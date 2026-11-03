@@ -1,3 +1,7 @@
+# Resume
+
+This resume site is published at <https://taylorrobertss.github.io/Resume/>. Pushes to `main` automatically build and deploy it to GitHub Pages.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
