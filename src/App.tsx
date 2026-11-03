@@ -1,4 +1,27 @@
+import { useState } from 'react'
 import './App.css'
+
+const EMAIL = 'taylor_june@hotmail.com'
+
+function CopyEmailButton() {
+  const [copied, setCopied] = useState(false)
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      window.prompt('Copy my email address:', EMAIL)
+    }
+  }
+
+  return (
+    <button className="copy-email" onClick={copy} type="button">
+      {copied ? 'Copied to clipboard ✓' : `${EMAIL} · copy`}
+    </button>
+  )
+}
 
 const skillGroups = [
   {
@@ -234,7 +257,7 @@ function App() {
             <h2 id="experience-title">Experience</h2>
             <a
               className="button button-outline"
-              href="/taylor-roberts-resume.pdf"
+              href={`${import.meta.env.BASE_URL}taylor-roberts-resume.pdf`}
               rel="noreferrer"
               target="_blank"
             >
@@ -336,7 +359,7 @@ function App() {
         <section aria-labelledby="work-title" className="section work-section" id="work">
           <div className="section-label">
             <span>03</span>
-            <span>A PROJECT THAT MATTERS</span>
+            <span>PROJECTS THAT MATTER</span>
           </div>
           <div className="work-card">
             <div className="work-copy">
@@ -395,6 +418,74 @@ function App() {
             The proof of concept helped spark wider generative AI adoption
             across the team.
           </p>
+
+          <div className="work-card work-card-reverse">
+            <div className="work-copy">
+              <p className="eyebrow">PERSONAL PROJECT · CLIMBING</p>
+              <h2 id="climbing-title">
+                Climbing
+                <br />
+                technique
+                <br />
+                analyser.
+              </h2>
+              <p className="work-description">
+                I had plenty of video of myself climbing, but no good way to
+                tell what to improve. So I built a tool that analyses body
+                position and climbing technique, using research on optimal
+                body position and footwork as its reference.
+              </p>
+              <div className="work-tags">
+                <span>Python</span>
+                <span>MediaPipe</span>
+                <span>Pose tracking</span>
+                <span>Biomechanics</span>
+              </div>
+              <a
+                className="text-link project-link"
+                href="https://github.com/taylorrobertss/Climbing-Analysis-Tool"
+                rel="noreferrer"
+                target="_blank"
+              >
+                View on GitHub <ArrowIcon />
+              </a>
+            </div>
+            <div aria-label="Illustration of a climber's body position being analysed" className="work-visual climb-visual" role="img">
+              <div className="flow-label flow-label-top">BODY POSITION · FOOTWORK</div>
+              <svg aria-hidden="true" className="climb-figure" viewBox="0 0 300 330">
+                <line className="climb-wall" x1="250" x2="250" y1="20" y2="310" />
+                <g className="climb-holds">
+                  <circle cx="250" cy="62" r="7" />
+                  <circle cx="250" cy="140" r="7" />
+                  <circle cx="250" cy="235" r="7" />
+                  <circle cx="250" cy="290" r="7" />
+                </g>
+                <line className="climb-gravity" x1="168" x2="168" y1="190" y2="305" />
+                <g className="climb-body">
+                  <polyline points="178,98 205,80 250,62" />
+                  <polyline points="178,98 212,128 250,140" />
+                  <line x1="178" x2="168" y1="98" y2="190" />
+                  <polyline points="168,190 212,222 250,235" />
+                  <polyline points="168,190 148,246 160,290" />
+                  <circle className="climb-head" cx="186" cy="68" r="14" />
+                </g>
+                <g className="climb-joints">
+                  <circle cx="178" cy="98" r="4" />
+                  <circle cx="168" cy="190" r="4" />
+                  <circle cx="205" cy="80" r="4" />
+                  <circle cx="212" cy="128" r="4" />
+                  <circle cx="212" cy="222" r="4" />
+                  <circle cx="148" cy="246" r="4" />
+                </g>
+                <text className="climb-note" x="30" y="95">STRAIGHT ARMS</text>
+                <text className="climb-note" x="30" y="195">HIPS TO WALL</text>
+                <text className="climb-note" x="30" y="315">BALANCE LINE</text>
+              </svg>
+              <div className="flow-label flow-label-bottom">
+                WHAT TO IMPROVE, FROM YOUR OWN VIDEO
+              </div>
+            </div>
+          </div>
         </section>
 
         <section aria-labelledby="skills-title" className="section skills-section">
@@ -514,7 +605,9 @@ function App() {
           <a className="button button-lime" href="mailto:taylor_june@hotmail.com">
             Get in touch <ArrowIcon />
           </a>
-          <p className="contact-email">taylor_june@hotmail.com</p>
+          <p className="contact-email">
+            No mail app opening? <CopyEmailButton />
+          </p>
         </section>
       </main>
 

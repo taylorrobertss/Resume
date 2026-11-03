@@ -842,6 +842,67 @@
   padding-bottom: 105px;
 }
 
+.work-card-reverse {
+  grid-template-columns: 1.1fr 0.9fr;
+  margin-top: 40px;
+}
+
+.project-link {
+  margin-top: 22px;
+}
+
+.work-card-reverse .work-visual {
+  order: -1;
+}
+
+.climb-figure {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 310px);
+  height: auto;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.climb-wall {
+  stroke: rgb(235 241 224 / 28%);
+  stroke-width: 2;
+}
+
+.climb-holds circle,
+.climb-joints circle {
+  fill: var(--lime);
+  stroke: none;
+}
+
+.climb-holds circle {
+  opacity: 0.85;
+}
+
+.climb-body {
+  stroke: #f3f5e9;
+  stroke-width: 3;
+}
+
+.climb-head {
+  fill: #1b4739;
+}
+
+.climb-gravity {
+  stroke: var(--lime);
+  stroke-dasharray: 4 5;
+  stroke-width: 1.2;
+}
+
+.climb-note {
+  fill: #bdcdb9;
+  stroke: none;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
 .skills-content {
   margin-top: 37px;
 }
@@ -1099,6 +1160,22 @@
   margin: 17px 0 0;
   color: #c4d2c8;
   font-size: 11px;
+}
+
+.copy-email {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--lime);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.copy-email:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 4px;
 }
 
 .site-footer {
@@ -1443,6 +1520,10 @@
   .work-card {
     grid-template-columns: 1fr;
     margin-top: 28px;
+  }
+
+  .work-card-reverse .work-visual {
+    order: 0;
   }
 
   .work-copy {
